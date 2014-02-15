@@ -38,23 +38,13 @@
     NSSize subStructureSize = self.frame.size;
     NSRect nodeRect = NSMakeRect(0, 0, subStructureSize.width, subStructureSize.height);
     MMPBaseMimeView* nodeView = [[nodeViewClass alloc] initWithFrame: nodeRect node: node options: self.options attributes: self.attributes];
-
-    nodeView.options = self.options;
-    nodeView.attributes = self.attributes;
     
     self.mimeView = nodeView;
-    [self addSubview: nodeView];
+//    [self addSubview: self.mimeView];
     
-    [nodeView setTranslatesAutoresizingMaskIntoConstraints: NO];
+//    [self.mimeView setTranslatesAutoresizingMaskIntoConstraints: NO];
     
-    [nodeView removeConstraints: nodeView.constraints];
-    [self removeConstraints: self.constraints];
-    [self setNeedsUpdateConstraints: YES];    
-}
-
--(void) dealloc {
-//    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-//    [nc removeObserver: self.mimeView];
+    [super createSubviews];
 }
 
 @end
