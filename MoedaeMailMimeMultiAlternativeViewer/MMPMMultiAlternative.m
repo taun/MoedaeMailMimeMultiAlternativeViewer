@@ -31,13 +31,13 @@
         }
     }
     
-    MMPMimeProxy* node = [self wantsRichTextPresentation] ? richNode : plainText;
+    MMPMimeProxy* node = self.options.asPlainText ? plainText : richNode;
     
     Class nodeViewClass = [[MBMimeViewerPluginsManager manager] classForMimeType: node.type subtype: node.subtype];
     
     NSSize subStructureSize = self.frame.size;
     NSRect nodeRect = NSMakeRect(0, 0, subStructureSize.width, subStructureSize.height);
-    MMPBaseMimeView* nodeView = [[nodeViewClass alloc] initWithFrame: nodeRect node: node options: self.options attributes: self.attributes];
+    MMPBaseMimeView* nodeView = [[nodeViewClass alloc] initWithFrame: nodeRect node: node options: self.options];
     
     self.mimeView = nodeView;
 //    [self addSubview: self.mimeView];
